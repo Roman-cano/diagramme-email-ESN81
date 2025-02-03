@@ -1,0 +1,111 @@
+/* ✅ Style global */
+body {
+    display: flex;
+    justify-content: center;
+    min-height: 100vh;
+    background-color: #f4f4f4;
+    font-family: Arial, sans-serif;
+}
+
+/* ✅ Style du conteneur des boutons */
+.buttons {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+/* ✅ Style des boutons */
+button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.3s ease-in-out;
+}
+
+/* ✅ Bouton "Croissant" */
+.croissant {
+    background-color: #28a745; /* Vert */
+    color: white;
+}
+
+.croissant:hover {
+    background-color: #218838;
+    transform: scale(1.05);
+}
+
+/* ✅ Bouton "Décroissant" */
+.decroissant {
+    background-color: #dc3545; /* Rouge */
+    color: white;
+}
+
+.decroissant:hover {
+    background-color: #c82333;
+    transform: scale(1.05);
+}
+
+/* ✅ Style de la liste des mails */
+.mails {
+    list-style-type: none;
+    padding: 0;
+    width: 80%;
+    max-width: 400px;
+}
+
+/* ✅ Style des éléments <li> */
+.mails li {
+    background-color: white;
+    padding: 10px;
+    margin: 5px 0;
+    border-radius: 5px;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+    transition: background 0.3s ease-in-out;
+}
+
+/* ✅ Effet au survol des <li> */
+.mails li:hover {
+    background-color: #e9ecef;
+    cursor: pointer;
+}
+
+/* ✅ Style du graphique */
+#myChart {
+    width: 400px;
+    height: 400px;
+    margin-top: 20px;
+}
+/* ✅ Style de l'input */
+/* ✅ Style de l'input */
+input {
+    margin-top: 10px;
+    width: 300px;
+    height: 50px;
+    padding: 10px 15px;
+    font-size: 16px;
+    border: 2px solid #ccc;
+    border-radius: 8px;
+    outline: none;
+    transition: all 0.3s ease-in-out;
+    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* ✅ Effet au focus */
+input:focus {
+    border-color: #007bff; /* Bleu */
+    box-shadow: 0px 0px 8px rgba(0, 123, 255, 0.6);
+}
+
+/* ✅ Placeholder stylisé */
+input::placeholder {
+    color: #aaa;
+    font-style: italic;
+}
+
+/* ✅ Style quand l'input est invalide */
+input:invalid {
+    border-color: #dc3545; /* Rouge */
+}
+
+
