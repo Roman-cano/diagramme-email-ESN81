@@ -35,26 +35,26 @@
         function getDomainFromEmail(email) {
             let parts = email.split("@");
             if (parts.length === 2) {
-                let domain = parts[1].toLowerCase().trim(); // Normalisation pour éviter les erreurs d'espaces
+                let domain = parts[1].toLowerCase().trim();
 
-                // Vérifie si le domaine correspond exactement
+
                 if (domain === "gmail.com") return "gmail";
-                if (domain === "yahoo.com" || domain === "yahoo.fr") return "yahoo"; // Gestion des variantes Yahoo
-                if (domain === "hotmail.com" || domain === "hotmail.fr") return "hotmail"; // Gestion Hotmail
+                if (domain === "yahoo.com" || domain === "yahoo.fr") return "yahoo";
+                if (domain === "hotmail.com" || domain === "hotmail.fr") return "hotmail";
 
-                return "other"; // Si ce n'est pas un domaine connu
+                return "other";
             }
             return null;
         }
 
 
 
-// Fonction pour vérifier et mettre à jour les compteurs de domaines
+
         function checDomain(email) {
             let domain = getDomainFromEmail(email);
             console.log("le domaine est " + domain);
 
-            if (domain in domaine) {  // Vérifie si la clé existe
+            if (domain in domaine) {
                 domaine[domain]++;
             } else {
                 domaine["other"]++;
@@ -155,8 +155,8 @@
                 }]
             },
             options: {
-                responsive: false,  // Désactive la mise à l'échelle automatique
-                maintainAspectRatio: false, // Permet de changer la taille librement
+                responsive: false,
+                maintainAspectRatio: false,
                 plugins: {
                     legend: {
                         position: "top"
