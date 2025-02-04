@@ -40,7 +40,31 @@ button {
     background-color: #dc3545; /* Rouge */
     color: white;
 }
+.liste_mail p {
+    margin: 0;
 
+}
+
+
+.checkbox {
+    width: 30px;
+    height: auto;
+    margin: 0;
+    box-shadow: none;
+}
+
+.checkbox:focus {
+    width: 30px;
+    height: auto;
+    box-shadow: none;
+}
+
+.liste_mail {
+    background: white;
+    height: max-content;
+    padding: 10px;
+    width: 130px;
+}
 .decroissant:hover {
     background-color: #c82333;
     transform: scale(1.05);
@@ -58,6 +82,7 @@ button {
 .mails li {
     background-color: white;
     padding: 10px;
+    width: 300px;
     margin: 5px 0;
     border-radius: 5px;
     box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
@@ -90,6 +115,9 @@ input {
     transition: all 0.3s ease-in-out;
     box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1);
 }
+
+
+
 
 /* ✅ Effet au focus */
 input:focus {
