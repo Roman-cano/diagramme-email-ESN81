@@ -2,11 +2,14 @@
 
 
     window.addEventListener("DOMContentLoaded", async() => {
+        let data = await getData();
         const croissant = document.querySelector(".croissant");
         const decroissant = document.querySelector(".decroissant");
+
         const inputmail = document.querySelector(".inputMail");
         const mails = document.querySelector(".mails");
         const liste_mail = document.querySelector(".liste_mail");
+        let sortMailByName = data;
 
         let domaine = {
             "gmail": 0,
@@ -20,15 +23,50 @@
         function generateListeMail() {
             Object.keys(domaine).forEach(key => {
                 let elt = document.createElement("p");
+                let caseCocher = document.createElement("input");
+                caseCocher.className = `${key}`;
+                caseCocher.value = `${key}`;
+                caseCocher.type = "checkbox";
+                caseCocher.addEventListener("change", updateFilteredMails);
+
                 elt.innerHTML = `${key}: ${domaine[key]}`;
                 liste_mail.appendChild(elt);
+                liste_mail.appendChild(caseCocher);
             });
+        }
+
+
+        function updateFilteredMails() {
+            let checkedDomains = [];
+            let checkedCase = document.querySelectorAll(".liste_mail input:checked");
+
+            checkedCase.forEach(checkbox => {
+                checkedDomains.push(checkbox.value);
+            });
+
+            if(checkedCase.length == 0) {
+                generateMails(data);
+                return;
+            }
+
+
+
+            sortMailByName = data.filter(email => {
+                let mailDomain = getDomainFromEmail(email);
+                return checkedDomains.includes(mailDomain);
+            });
+            console.log("--------------------------");
+            console.log(sortMailByName);
+            generateMails(sortMailByName);
         }
 
 
 
 
-        let data = await getData();
+
+
+
+
 
 
 
@@ -73,12 +111,6 @@
 
 
 
-        croissant.addEventListener("click", () => {
-            data.sort();
-            supprimer();
-            generateMails(data);
-        });
-
 
 
         inputmail.addEventListener("input", (event) => {
@@ -87,17 +119,23 @@
             generateMails(lesMails);
         })
 
+        croissant.addEventListener("click", () => {
+            sortMailByName.sort();
+            supprimer();
+            generateMails(sortMailByName);
+        });
+
 
 
         decroissant.addEventListener("click", () => {
-            data.sort();
-            data.reverse();
+            sortMailByName.sort();
+            sortMailByName.reverse();
             supprimer();
-            generateMails(data);
+            generateMails(sortMailByName);
         })
 
         function generateMails(array) {
-
+            mails.innerHTML = "";
             array.forEach(elt => {
                 let li = document.createElement("li");
                 li.innerHTML = elt;
