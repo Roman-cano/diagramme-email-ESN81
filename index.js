@@ -6,6 +6,7 @@
         const decroissant = document.querySelector(".decroissant");
         const inputmail = document.querySelector(".inputMail");
         const mails = document.querySelector(".mails");
+        const liste_mail = document.querySelector(".liste_mail");
 
         let domaine = {
             "gmail": 0,
@@ -16,7 +17,20 @@
         }
 
 
+        function generateListeMail() {
+            Object.keys(domaine).forEach(key => {
+                let elt = document.createElement("p");
+                elt.innerHTML = `${key}: ${domaine[key]}`;
+                liste_mail.appendChild(elt);
+            });
+        }
+
+
+
+
         let data = await getData();
+
+
 
         function getDomainFromEmail(email) {
             let parts = email.split("@");
@@ -48,6 +62,7 @@
         }
 
 
+
         data.forEach(email => {
             let domain = getDomainFromEmail(email);
             console.log(`Email : ${email}, Domaine détecté : ${domain}`);
@@ -64,11 +79,15 @@
             generateMails(data);
         });
 
+
+
         inputmail.addEventListener("input", (event) => {
             let lesMails = searchMail(event.target.value);
             supprimer();
             generateMails(lesMails);
         })
+
+
 
         decroissant.addEventListener("click", () => {
             data.sort();
@@ -96,6 +115,7 @@
         }
 
         generateMails(data);
+        generateListeMail();
 
 
 
